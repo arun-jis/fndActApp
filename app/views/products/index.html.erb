@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+<div class="row"><h3>All Products</h3></div>
+<!-- ><div class="row">
+  <div class="row">
+    <div class="medium-3 columns">Image</div>
+    <div class="medium-3 columns">Name</div>
+    <div class="medium-3 columns">Price</div>
+    <div class="medium-3 columns">Actions</div>
+  </div>
+  <div class="row">&nbsp;</div>
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="small-3 columns">
+        <div class="thumbnail">
+          <%= image_tag(product.pictures.first.image.url(:thumb)) %>
+        </div>         
+      </div>
+      <div class="small-3 columns"><%= product.name %></div>
+      <div class="small-3 columns"><%= product.price %></div>
+      <div class="small-3 columns">
+        <%= link_to 'Show', product %> | 
+        <%= link_to 'Edit', edit_product_path(product) %> | 
+        <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div> 
+      <div class="row">&nbsp;</div>  
+    <% end %>
+  </div>
+</div>
+<div class="row">&nbsp;</div>  -->
+<div class="row"><%= link_to 'New Product', new_product_path, class: "button round" %></div>
+<div class="row">&nbsp;</div>
+<div class="row small-up-2 medium-up-3 large-up-4">
+   <% @products.each do |product| %>
+    <div class="column column-block">
+      <div class="thumbnail"><%= image_tag(product.pictures.first.image.url(:medium)) %></div>
+      <p><%= product.name %></p>
+      <p>$ <%= product.price %> | <a data-open="full-img-modal-<%= product.pictures.first.id %>">Full Image</a></p>
+    </div>
+    <div class="reveal" id="full-img-modal-<%=product.pictures.first.id %>" data-reveal>
+      <div class="thumbnail"><%= image_tag(product.pictures.first.image.url) %></div>
+      <button class="close-button" data-close aria-label="Close reveal" type="button"><span aria-hidden="true">&times;</span></button>      
+    </div>
+  <% end %>
+</div>
+<div class="row"><%= link_to 'New Product', new_product_path, class: "button round" %></div>

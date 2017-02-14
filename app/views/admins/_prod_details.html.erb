@@ -1,0 +1,17 @@
+<div>
+  <% prod.pictures.each do |pic| %>
+    <div style='float: left;margin-left: 2px;'>
+      <%= image_tag pic.image.url(:medium) %>
+    </div>
+  <% end %>
+  <div style='clear: both;'>&nbsp;</div>
+</div>
+<div>
+  <% prod.product_details.each do |p| %>
+    <div style='float: left;margin-left: 10px;'>
+      <p><%= p.size %> | <%= p.color %></p>
+      <p><%= p.description %></p>
+    </div>
+  <% end %>
+  <div style='clear: both;'>&nbsp;</div>
+</div>
