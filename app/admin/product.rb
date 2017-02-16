@@ -9,6 +9,8 @@ ActiveAdmin.register Product do
     f.inputs  do
       f.input :name
       f.input :price
+      f.input :brand_id, :as => :select, :collection => Brand.all, :member_label => lambda { |i| i.brand_name }
+      f.input :category_id, :as => :select, :collection => Category.all, :member_label => lambda { |i| i.category_name }
       f.has_many :pictures, allow_destroy: true do | pic |
         pic.input :image
       end
